@@ -1,0 +1,35 @@
+.root {
+   flex-grow: 1;
+}
+.form_button {
+   width: '705px';
+   height: '40px';
+   display: 'flex';
+   flex-direction: 'row';
+   align-items: 'center';
+   flex-wrap: 'wrap';
+   border: 'none';
+}
+.groupbutton {
+   display: flex;
+   align-items: 'center';
+   width: 100%;
+   height: 60px;
+   margin: 20px 0 0 5px;
+}
+.filter {
+   align-items: center;
+   padding: 8px 24px;
+   border-radius: 8px;
+   height: 46px;
+   border: 1px solid black;
+   &:hover {
+      background-color: #1768b2;
+      color: #ffffff;
+   }
+}
+.active_ant {
+   background-color: #1768b2;
+   color: #ffffff;
+   border: none;
+}

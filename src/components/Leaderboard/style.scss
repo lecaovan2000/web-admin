@@ -1,0 +1,49 @@
+.leaderboard {
+	& .ant-list-item-meta {
+		align-items: center;
+	}
+
+	&__avatar {
+		width: 70px;
+		height: 40px;
+		border-radius: 20px;
+		background-color: #dbdbdb;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		border: none;
+		& .ant-image {
+			position: absolute;
+			top: 0;
+			right: 0px;
+			height: 40px;
+			width: 40px;
+		}
+
+		&.avatar {
+			&--0 {
+				background-image: linear-gradient(to right, #cc2b5e 0%, #753a88 100%);
+			}
+			&--1 {
+				background-image: linear-gradient(to right, #ee515d 0%, #ef98a5 100%);
+			}
+			&--2 {
+				background-image: linear-gradient(to right, #f9db6a 0%, #f3a65d 100%);
+			}
+		}
+	}
+	&__img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+		border: 2px solid #fff;
+	}
+	& .name {
+		margin: 0;
+	}
+	&.xp {
+		margin: 0;
+	}
+}
