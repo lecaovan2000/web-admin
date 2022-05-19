@@ -1,120 +1,118 @@
 .login-container {
-   width: 100%;
-   height: 100%;
-   display: flex;
+	height: 100vh;
+	width: 100%;
+
+	position: relative;
 }
+
 .left-container {
-   position: relative;
 	height: 100%;
 	padding: 69px;
-   // width: 30%;
 
+	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-   
 }
-.right-container{
+
+.right-container {
 	position: relative;
 	right: 0;
 
-	width:60%;
-	height:100%;
+	width: 60%;
+	height: 100%;
 
-	&-img {
-      // margin: auto;
-		height:100%;
-		width:100%;
+	img {
+		height: 100%;
+		width: 100%;
 		object-fit: cover;
-	 }
+	}
 }
-.name_logo{
-   width: 100%;
-	margin-bottom: 4rem;
 
-   h3{
-      font-size:4rem;
-      color:chocolate;
-      font-weight: bold;
-   }  
-   
-   }
-   .login{
-      &-wrapper {
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         width: 100%;
-      }
-      &__input-label {
-         font-size: 16px;
-         line-height: 24px;
-         letter-spacing: 0.03em;
-   
-         margin-bottom: 10px;
-      }
-      &__input {
-         align-items: center;
-         .ant-input-affix-wrapper {
-            align-items: center;
-            border-radius: 8px;
-            display: flex;
-         }
-   
-         .ant-input-password {
-            height: 100%;
-            line-height: 34px;
-            
-            
-            & > input {
-               border-radius:none !important;
-               &:hover,:focus{
-                  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) ;
-               }
-              
-            }
-   
-            input:-webkit-autofill > & {
-               background-color: rgb(232, 240, 254) !important;
-               
-            }
-            input:autofill & {
-               background-color: rgb(232, 240, 254) !important;
-            }
-         }
-   
-         .input-item .ant-input,
-         .input-item .ant-input-number,
-         .input-item .ant-select .ant-select-selector {
-            line-height: 32px;
-            background-color: #ffffff; 
-            border: 1px solid #dbdbdb !important;
-         }
-      }
-   
-      &__btn {
-         background-color: #1768b2;
-         outline: none !important;
-         border: none !important;
-         border-radius: 4px !important;
-         color: #ffffff;
-         width: 100%;
-         height: 48px;
-         transition: all 0.2s ease-in-out;
-         font-family: 'Inter-medium';
-         letter-spacing: 0.03em;
-         font-size: 16px;
-   
-         cursor: pointer;
-         opacity: 0.9;
-   
-         margin-top: 10px;
-         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-         &:hover,
-         &:focus {
-            color: #ffffff; 
-            background-color: #1768b2;
-            opacity: 0.9;
-         }
-      }
-   }
-   
+.login {
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		width: 100%;
+	}
+
+	&__logo {
+		h1 {
+			font-family: 'Roboto';
+			color: chocolate;
+			font-style: bold;
+			font-size: 4rem;
+			font-weight: bold;
+			// font-style: bold;
+			// text-align: center;
+		}
+		width: 100%;
+		margin-bottom: 4rem;
+	}
+
+	&__input-label {
+		font-size: 16px;
+		// font-family: $font--semibold;
+		line-height: 24px;
+		letter-spacing: 0.03em;
+
+		margin-bottom: 10px;
+	}
+
+	&__input {
+		.ant-input-affix-wrapper {
+			border-radius: 8px;
+
+			&:hover {
+				border: 1px solid #1768b2;
+			}
+		}
+
+		.ant-input-password {
+			& > input {
+				border-radius: 0 !important;
+			}
+
+			input:-webkit-autofill > & {
+				background-color: rgb(232, 240, 254) !important;
+			}
+			input:autofill & {
+				background-color: rgb(232, 240, 254) !important;
+			}
+		}
+
+		.input-item .ant-input,
+		.input-item .ant-input-number,
+		.input-item .ant-select .ant-select-selector {
+			line-height: 32px;
+			background-color: #ffffff;
+		}
+	}
+
+	&__btn {
+		background-color: #1768b2;
+		outline: none !important;
+		border: none !important;
+		border-radius: 4px !important;
+		color: #ffffff;
+		width: 100%;
+		height: 48px;
+		transition: all 0.2s ease-in-out;
+		font-family: 'Inter-medium';
+		letter-spacing: 0.03em;
+		font-size: 16px;
+
+		cursor: pointer;
+		opacity: 0.9;
+
+		margin-top: 10px;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		&:hover,
+		&:focus {
+			color: #ffffff;
+			background-color: #1768b2;
+			opacity: 0.9;
+		}
+	}
+}
