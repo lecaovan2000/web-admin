@@ -44,7 +44,7 @@ function LoginForm(props) {
          <div className="login__input-label">
             <label htmlFor="password">Password</label>
          </div>
-         <PasswordField className="login__input" size="large" form={form} name="password"  placeholder="Password" />
+         <PasswordField className="login__input" size="x-large" form={form} name="password"  placeholder="Password" />
          <Button
             className="login__btn"
             htmlType="submit"

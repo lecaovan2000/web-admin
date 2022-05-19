@@ -1,14 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
-import './Scss/styles.scss'
+import store from './app/store'
+import './scss/styles.scss'
+import 'antd/dist/antd.css'
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { SnackbarProvider } from 'notistack';
+import { BrowserRouter } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store} >
+      <SnackbarProvider   maxSnack={1}>
+        <BrowserRouter>
+          <App/>
+        </BrowserRouter>
+      </SnackbarProvider>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

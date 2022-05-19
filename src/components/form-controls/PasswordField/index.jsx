@@ -33,8 +33,8 @@ function PasswordField(props) {
             name={name}
             control={control}
             render={({ field, fieldState: { invalid, error } }) => (
-               <div className="input-item">
-                  <Input.Password
+               <div>
+                  <Input.Password className="input-item"
                      {...field}
                      {...restProps}
                      disabled={disabled}

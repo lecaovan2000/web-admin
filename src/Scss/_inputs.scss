@@ -3,7 +3,7 @@
    // font-family: $font--semibold !important;
 }
 .input-item {
-   display: block;
+   // display: block;
    
    & > input {
       &:focus {
@@ -101,10 +101,10 @@
       background-color: #ffffff;
    }
 }
-// .ant-btn:hover,
-// .ant-btn:focus {
-// 	border: none;
-// }
+.ant-btn:hover,
+.ant-btn:focus {
+	border: none;
+}
 .file-input {
    display: flex;
    justify-content: space-between;

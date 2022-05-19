@@ -9,7 +9,7 @@ function Header(props) {
    const { leftComponent, title, rightComponent } = props;
 
    return (
-      <div className="header">
+      <div className="header-user">
          <div className="left-component">
             {leftComponent}
          </div>

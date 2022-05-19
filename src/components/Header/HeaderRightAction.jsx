@@ -12,7 +12,7 @@ function HeaderRightAction(props) {
       if (onClick) onClick();
    }
    return (
-      <button className={`header__right-btn ${bordered ? 'bordered' : ''}`} onClick={handleClick}>
+      <button className={`header-user__right-btn ${bordered ? 'bordered' : ''}`} onClick={handleClick}>
          {icon}
          {text}
       </button>

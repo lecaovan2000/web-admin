@@ -1,0 +1,86 @@
+.header-user {
+	width: 100%;
+	height: 48px;
+	background-color:#1768b2;
+	display: flex;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	&__right-btn {
+		font-size: 16px;
+   	line-height: 24px;
+		padding: 0 25px;
+		height: 100%;
+		background-color: transparent;
+		color: #fff;
+		border: 0;
+		cursor: pointer;
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 15px;
+		&.bordered {
+			border-left: 1px solid #8bb3d8;
+		}
+	}
+}
+
+.left-component {
+	width: 30%;
+	height: 100%;
+	display: flex;
+}
+
+.left-btn-header {
+	line-height: 24px;
+	padding: 12px 24px;
+	border-right: 1px solid rgba($color: white, $alpha: 0.5);
+	width: fit-content;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+
+.right-btn-header {
+	line-height: 24px;
+	padding: 12px 24px;
+	border-left: 1px solid rgba($color: white, $alpha: 0.5);
+	width: fit-content;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+
+.title-table {
+	width: 40%;
+	height: 100%;
+	color: #ffffff;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 0.03em;
+	font-family:'Inter-medium', 'Inter-regular', 'Roboto', 'Arial', 'Helvetica', sans-serif;
+	text-align: center;
+}
+
+.title-table > p {
+	margin: 0;
+	max-height: 48px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.action-component {
+	width: 30%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.bnt_back{
+	border:none;
+	background-color:#1768b2;
+	color: #ffffff;
+	align-items: center;
+}
