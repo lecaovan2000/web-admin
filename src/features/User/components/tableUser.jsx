@@ -76,7 +76,9 @@ function TableUser(props){
    const clickStatusUser = (value, uid) => {
       if (onStatusChange) {
          onStatusChange(value, uid)
+         
       }
+      
    }
    return(
       <SuperTable 

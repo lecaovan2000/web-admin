@@ -8,13 +8,17 @@ import HeaderRightAction from '../../../components/Header/HeaderRightAction';
 import IconAdd from '../../../assets/icons/IconAdd';
 import DetailUser from './detailUser';
 import { utilsToken } from '../../../utils/token';
+import { useRouteMatch } from 'react-router-dom';
 function ListUser(){
    const [loading, setLoading] = useState(false)
    const [dataSource, setDataSource] = useState([])
    const { enqueueSnackbar } = useSnackbar()
    const [pagination, setPagination] = useState(constants.DEFAULT_PAGINATION)
    const Token = utilsToken.getAccessToken()
-
+   const {
+      params: { userUid }
+   } = useRouteMatch()
+   console.log('UidUser',userUid)
    const getAllUser = async(pagination = constants.DEFAULT_PAGINATION)=>{
       setLoading(true)
       try {
@@ -36,12 +40,13 @@ function ListUser(){
    useEffect(()=>{
       getAllUser()
    },[])
-   const handleStatusUser = async (activate, payload) => {
+   console.log('dataUser',dataSource)
+   const handleStatusUser = async (activate, userUid) => {
       setLoading(true)
       try {
          const payload={
             token: Token,
-            uid: dataSource.uid,
+            uid: userUid,
            
 
          }
