@@ -8,7 +8,7 @@ import { utilsToken } from '../utils/token';
 const PORT = process.env.PORT || 8000;
 
 const axiosClient = axios.create({
-   baseURL: `http://13.229.92.204:${PORT}/api/v1/`,
+   baseURL: `http://54.254.180.114:${PORT}/api/v1/`,
    headers: {
       get: {
          'content-type': 'application/json'

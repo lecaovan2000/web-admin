@@ -22,10 +22,10 @@ function ListUser(){
    const getAllUser = async(pagination = constants.DEFAULT_PAGINATION)=>{
       setLoading(true)
       try {
-         const response = await apiUser.getAllUser({
-            page:pagination.pageNo,
-            // page_size: pagination.pageSize,
-         })
+         const response = await apiUser.getAllUser({role:"CUSTOMER"})
+         //    page:pagination.pageNo,
+         //    page_size: pagination.pageSize,
+         // })
          console.log('data',response)
          setDataSource(response.data)
          // setPagination({
@@ -47,8 +47,6 @@ function ListUser(){
          const payload={
             token: Token,
             uid: userUid,
-           
-
          }
          const response = await apiUser.showHide(payload, activate)
          enqueueSnackbar(response.message, {
