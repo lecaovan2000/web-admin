@@ -50,7 +50,7 @@ function TableUser(props){
             key: 'activate',
             dataIndex: 'activate',
             render:(_,record)=>{
-               return record.activate ?<div style={{color:'blue'}}>Hoạt động</div>:<div style={{color:'red'}} >Dừng hoạt động</div>
+               return record.activate ?<div style={{color:'blue'}}>Hoạt động</div>:<div style={{color:'red'}} >Chờ active</div>
             }
          },
          {
@@ -61,8 +61,8 @@ function TableUser(props){
                <div>
                   <Button title='View profile' onClick={()=>{history.push(`/user/${record.uid}`)}}><EyeOutlined/></Button>
                   <Switch
-                     checkedChildren="Show"
-                     unCheckedChildren="Hide"
+                     checkedChildren="Block"
+                     unCheckedChildren="UnBlock"
                      checked={record.activate}
                      onClick={async e => await clickStatusUser(e, record.uid)}
                   />
