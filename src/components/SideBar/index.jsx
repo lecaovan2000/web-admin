@@ -1,44 +1,23 @@
-// import { Avatar, Badge, Popover, Tooltip } from 'antd'
 import { Avatar, Tooltip,Badge, Popover } from 'antd'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, {  useMemo } from 'react'
 import { NavLink, useLocation, withRouter } from 'react-router-dom'
 import IconMenuCollapse from '../../assets/icons/IconMenuCollapse'
 import IconMenuExpand from '../../assets/icons/IconMenuExpand'
 import { path } from '../../constants/path'
 import IconUser from '../../assets/icons/iconUser'
 import IconUserActive from '../../assets/icons/iconUserActive' ;
-// import {logout} from'../../view/auth/userSlice'
-import { unwrapResult } from '@reduxjs/toolkit';
+import { logout } from '../../app/authSlice'
+import { useHistory } from 'react-router-dom'
+import { unwrapResult } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux';
-// import { utilsToken } from '../../utils/token'
-// import userApi from '../../api/userApi'
-
 
 SideBar.propTypes = {}
 
 function SideBar(props) {
-   const { isCollapsed, onCollapseClick,currentUser } = props
+   const { isCollapsed, onCollapseClick } = props
    const location = useLocation()
-   // const history = useHistory()
-   // const dispatch = useDispatch()
-   // const inforUser = utilsToken.getAccessUser()
-   // const newInfoUser = JSON.parse(inforUser)
-   // const [infoUser, setInfoUser]=useState({})
-   // const tokenUser = utilsToken.getAccessToken()
-   // console.log(tokenUser)
-
-   // const getInfoUser = async()=>{
-   //    try {
-   //       const response = await userApi.getProfileUserName(newInfoUser.uid)
-   //       console.log("sibar user", response)
-   //       setInfoUser(response.data)
-   //    } catch (error) {
-   //       console.log(error)
-   //    }
-   // }
-   // useEffect(()=>{
-   //    getInfoUser()
-   // },[])
+   const history = useHistory()
+   const dispatch = useDispatch()
 
    const comparePath = (pathname, routeLink) => {
       return pathname.split('/')[1] === routeLink.substring(1)
@@ -47,12 +26,18 @@ function SideBar(props) {
       return [
          {
             routeLink: path.root,
-            label: 'Thông tin',
+            label: 'Dashboard',
             icon: <IconUser />,
             iconActive: <IconUserActive/>
          },
          {
             routeLink: path.user,
+            label: 'Quản lí User',
+            icon: <IconUser />,
+            iconActive: <IconUserActive/>
+         },
+         {
+            routeLink: path.project,
             label: 'Dự án',
             icon: <IconUser />,
             iconActive: <IconUserActive />
@@ -111,9 +96,7 @@ function SideBar(props) {
          onCollapseClick()
       }
    }
-   const callBack=()=>{
-      // history.push(paths.root)
-   }
+   
 
    return (
       <div className={`sidebar__container ${isCollapsed ? 'sidebar--collapsed' : ''}`}>
@@ -131,9 +114,15 @@ function SideBar(props) {
                trigger="click"
                placement="topLeft"
                content={
-                  <div >
-                     
-                  </div>
+                  <div>
+                       <button onClick={async()=>{
+                           const adminLogout = await dispatch(logout())
+                           unwrapResult(adminLogout)
+                           // history.push(paths.root)
+                        }
+
+                        } >Đăng Xuất</button>
+                     </div>
                }
             >
                <div className="sidebar__user-avatar">

@@ -7,6 +7,10 @@ const apiLoginAdmin = {
    register:(payload)=>{
       const url = 'user/register'
       return axiosClient.post(url, payload)
-   }
+   },
+   logout:(data)=>{
+      const url='user/logout'
+      return axiosClient.post(url,data)
+   },
 }
 export default apiLoginAdmin;

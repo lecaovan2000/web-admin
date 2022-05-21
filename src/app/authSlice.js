@@ -7,13 +7,12 @@ import { path } from "../constants/path";
 import { utilsToken } from "../../src/utils/token";
 
 // createAsyncThunk cái này sử dụng cho login và register
-export const register = createAsyncThunk("user/register", async (payload) => {
-  const res = await apiLoginAdmin.register(payload);
-  console.log(res);
-  localStorage.setItem(StorageKeys.ACCESS_TOKEN, res.token);
-  localStorage.setItem(StorageKeys.USER, JSON.stringify(res.user));
-  return res.user;
-});
+// export const register = createAsyncThunk("user/logout", async (data) => {
+//   const res = await apiLoginAdmin.logout(data);
+//   console.log(res);
+//   localStorage.removeItem(StorageKeys.ACCESS_TOKEN);
+//   localStorage.removeItem(StorageKeys.USER);
+// });
 
 // createAsyncThunk cái này sử dụng cho login và register
 export const login = createAsyncThunk("user/login_admin", async (payload) => {
@@ -31,18 +30,17 @@ const userSlice = createSlice({
   },
   reducers: {
     logout(state) {
-      // const getToken = utilsToken.getAccessToken()
 
       //clear local storage
       state.current = {};
-      localStorage.removeItem(StorageKeys.ACCESS_TOKEN);
-      localStorage.removeItem(StorageKeys.USER);
+      localStorage.removeItem(StorageKeys.USER)
+      localStorage.removeItem(StorageKeys.ACCESS_TOKEN)
     },
   },
   extraReducers: {
-    [register.fulfilled]: (state, action) => {
-      state.current = action.payload;
-    },
+   //  [logout.fulfilled]: (state, action) => {
+   //    state.current = action.data;
+   //  },
 
     [login.fulfilled]: (state, action) => {
       state.current = action.payload;
@@ -54,34 +52,3 @@ const { actions, reducer } = userSlice;
 export const { logout } = actions;
 export default reducer;
 
-
-
-
-
-// const authSlice = createSlice({
-//    name: 'store',
-//    initialState: {
-//       current: JSON.parse(localStorage.getItem(StorageKeys.USER)) || {},
-//       current: {},
-//       settings: {}
-//    },
-//    reducers: {
-//       logout(state, action) {
-//          // clear local storage
-//          localStorage.removeItem(StorageKeys.USER)
-//          localStorage.removeItem(StorageKeys.ACCESS_TOKEN)
-
-//          state.current = {}
-//       }
-//    },
-//    extraReducers: {
-//       [login.fulfilled]: (state, action) => {},
-//       [getCurrentUser.fulfilled]: (state, action) => {
-//          state.current = action.payload
-//       }
-//    }
-// })
-
-// const { actions, reducer } = authSlice
-// export const { logout } = actions
-// export default reducer

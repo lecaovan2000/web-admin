@@ -1,23 +1,14 @@
 import React from "react";
-import Header from '../../components/Header'
-import HeaderRight from '../../components/Header/HeaderRightAction'
-import IconBack from "../../assets/icons/IconBack";
-import IconAdd from '../../assets/icons/IconAdd'
+import ListUser from "./page/listUser";
+import { Switch,Route, useRouteMatch } from "react-router";
+import DetailUser from "./page/detailUser";
 function User(){
+   const match = useRouteMatch()
    return(
-      <div>
-         <Header title="Project" 
-         leftComponent={
-            <button className='bnt_back' >
-                <IconBack/> Back
-            </button>
-         }
-         rightComponent={
-            
-            <HeaderRight icon={<IconAdd/>} />
-         }/>
-         <h1>Page User</h1>
-      </div>
+      <Switch>
+         <Route exact path={match.url}  component={ListUser} />
+         <Route path={`${match.url}/:userUid`} component={DetailUser} />
+      </Switch>
    )
 }
 export default User;
