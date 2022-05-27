@@ -25,6 +25,7 @@ const token = utilsToken.getAccessToken()
             page_size:pagination.pageSize
          }
          const response = await apiNews.getAllNews(payload)
+         console.log('data news', response)
          setDataSource(response.data)
          setPagination({
             pageNo: response.total_page,

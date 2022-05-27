@@ -18,7 +18,7 @@ function ListUser(){
    const {
       params: { userUid }
    } = useRouteMatch()
-   console.log('UidUser',userUid)
+   // console.log('UidUser',userUid)
    const getAllUser = async(pagination = constants.DEFAULT_PAGINATION)=>{
       setLoading(true)
       try {

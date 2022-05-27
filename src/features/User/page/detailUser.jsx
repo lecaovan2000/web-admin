@@ -6,6 +6,7 @@ import apiUser from "../../../api/apiUser";
 import { useSnackbar } from "notistack";
 import IconBack from "../../../assets/icons/IconBack";
 import { useHistory } from "react-router-dom";
+import { constants } from "../../../constants/global";
 // import { utilsToken } from "../../../utils/token";
 
 function DetailUser(){
@@ -13,31 +14,29 @@ function DetailUser(){
       params: { userUid }
    } = useRouteMatch()
    const history = useHistory()
-   const [pagination, setPagination] = useState({
-      pageSize: 10,
-      pageNo: 1
-   })
+   const [pagination, setPagination] = useState(constants.DEFAULT_PAGINATION)
 
    const [dataSource, setDataSource] =useState({})
    const [profileUser, setProfileUser]=useState({})
    const [loading, setLoading]=useState(false)
    const {enqueueSnackbar}= useSnackbar()
 
-   useEffect(() => {
-      const  getProjectUser = async () => {
+   
+      const  getAllProjectUser = async (pagination= constants.DEFAULT_PAGINATION_PROJECT_USER) => {
          setLoading(true)
          try {
             const data ={
-               uid_user:userUid
+               uid_user:userUid,
+               page:pagination.pageNo,
+               page_size:pagination.pageSize
             }
             const response = await apiUser.getProjectUser(data)
-            console.log('dataTableUser', response)
+            console.log('data Table User', response)
             setDataSource(response.data)
             setPagination({
-               pageNo:response.data.total_page,
-               pageSize:response.data.total,
-            }
-            )
+               pageNo: response.total_page,
+               pageSize:response.total,
+            })
          } catch (error) {
             enqueueSnackbar(error.message, {
                variant: 'error'
@@ -45,9 +44,13 @@ function DetailUser(){
          }
          setLoading(false)
       }
-      getProjectUser()
+      useEffect(() => {
+      getAllProjectUser()
    },[])
-
+   const handleChangePagination = (pageNo, pageSize) => {
+      getAllProjectUser({ pageNo, pageSize })
+   }
+   
    const getProfileUser = async()=>{
       setLoading(true)
       try {
@@ -61,6 +64,7 @@ function DetailUser(){
    useEffect(()=>{
       getProfileUser()
    },[])
+   
    return(
       <div>
          <Header
@@ -78,6 +82,8 @@ function DetailUser(){
             dataSource={dataSource}
             loading={loading}
             pagination={pagination}
+            label='Danh sách dự án user:'
+            onPaginate={handleChangePagination}
          />
       </div>
    )

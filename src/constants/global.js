@@ -6,6 +6,10 @@ const DEFAULT_PAGINATION_NEWS = {
    pageNo: 1,
    pageSize: 10
 }
+const DEFAULT_PAGINATION_PROJECT_USER = {
+   pageNo: 1,
+   pageSize: 10
+}
 
 const HALF_LAYOUT = {
    wrapperCol: 12,
@@ -34,6 +38,7 @@ const urlRegex =
 export const constants = {
    DEFAULT_PAGINATION,
    DEFAULT_PAGINATION_NEWS,
+   DEFAULT_PAGINATION_PROJECT_USER,
 
    HALF_LAYOUT,
    FULL_LAYOUT,

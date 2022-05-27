@@ -14,6 +14,11 @@ TableProjectUser.propTypes = {}
 function TableProjectUser(props) {
    // const [isModalVisible, setIsModalVisible] = useState(false)
    // const [viewedUser, setViewedUser] = useState({})
+   const handleChangePagination = (pageNo, pageSize) => {
+      if (onPaginate) {
+         onPaginate(pageNo, pageSize)
+      }
+   }
    const {
       loading,
       label,
@@ -162,8 +167,8 @@ function TableProjectUser(props) {
             submitting={loading}
             hasPagination={true}
             pagination={pagination}
-            // onPaginate={onPaginate}
-            // onChange={onTableChange}
+            onPaginate={onPaginate}
+            onChange={handleChangePagination}
          />
          {/* <DetailUserModal
             isOpen={isModalVisible}

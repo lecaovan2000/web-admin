@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { common } from '../../../utils/common';
 
 function NewsListTable(props){
-   const {dataSource,pagination,onPaginate,onTableChange,onStatusChange}=props
+   const {dataSource,pagination,onPaginate,onStatusChange}=props
    const handleChangePagination = (pageNo, pageSize) => {
       if (onPaginate) {
          onPaginate(pageNo, pageSize)
@@ -61,12 +61,12 @@ function NewsListTable(props){
             render:(_,record)=>(
                <div>
                   <Button title='View profile' ><EyeOutlined/></Button>
-                  {/* <Switch
+                  <Switch
                      checkedChildren="Block"
                      unCheckedChildren="UnBlock"
                      checked={record.activate}
-                     onClick={async e => await clickStatusUser(e, record.uid)}
-                  /> */}
+                     onClick={async e => await clickStatusNews(e, record.uid)}
+                  />
                </div>
             )
          },
@@ -74,7 +74,7 @@ function NewsListTable(props){
          
       ]
    })
-   const clickStatusUser = (value, uid) => {
+   const clickStatusNews = (value, uid) => {
       if (onStatusChange) {
          onStatusChange(value, uid)
          
@@ -88,7 +88,6 @@ function NewsListTable(props){
          dataSource={dataSource}
          pagination={pagination}
          onPaginate={onPaginate}
-         // onChange={onTableChange}
          onChange={handleChangePagination}
          scroll={{ x:'max-content'}}
       />
