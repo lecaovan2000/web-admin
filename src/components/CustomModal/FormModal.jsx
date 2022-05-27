@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button } from 'antd'
-import IconAddCancel from '@/assets/icons/IconAddCancel'
+import IconAddCancel from '../../assets/icons/IconAddCancel'
 
 FormModal.propTypes = {
    title: PropTypes.string.isRequired,

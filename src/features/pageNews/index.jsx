@@ -7,11 +7,6 @@ import NewsList from "./page/newsList";
 function TestRouting(){
    return(
       <div>
-         <Header title="Project" 
-         rightComponent={
-            
-            <HeaderRight icon={<IconAdd/>} />
-         }/>
          <NewsList/>
       </div>
    )
