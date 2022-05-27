@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Row, Col } from 'antd'
 import LoginForm from '../LoginForm'
 import ImgCover from '../../../assets/img/coveimg.jpg'
@@ -8,11 +8,28 @@ import { path } from '../../../constants/path'
 import { unwrapResult } from '@reduxjs/toolkit'
 import { login } from '../../../app/authSlice'
 import { useSnackbar } from 'notistack'
+import { utilsToken } from '../../../utils/token'
+import apiLoginAdmin from '../../../api/apiLoginAdmin'
+import { common } from '../../../utils/common'
 
 function Login() {
    const history = useHistory()
    const dispatch = useDispatch();
    const { enqueueSnackbar } = useSnackbar();
+
+   useEffect(()=>{
+      const checkAccessToken = async()=>{
+         const token = utilsToken.getAccessToken()
+         if(token){
+            try {
+                  history.push(path.root)
+            } catch (error) {
+               common.removeBearerToken()
+            }
+         }
+      }
+      checkAccessToken()
+   },[history])
 
    const handleSubmit = async (values) => {
       try {

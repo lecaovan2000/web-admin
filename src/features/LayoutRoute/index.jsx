@@ -3,7 +3,8 @@ import SideBar from '../../components/SideBar';
 import { Route, Switch, withRouter} from 'react-router-dom'
 import { path} from '../../constants/path.js';
 import User from '../User';
-import TestRouting from '../TestRouting';
+// import TestRouting from '../TestRouting';
+import pageNews from '../pageNews'
 import Dashboard from '../Dashboard';
 
 function LayoutRouter(props){
@@ -23,7 +24,7 @@ function LayoutRouter(props){
             <Switch>
                <Route exact  path={path.root} component={Dashboard} />
                <Route path={path.user} component={User} />
-               <Route path={path.project} component={TestRouting} />
+               <Route path={path.project} component={pageNews} />
                
             </Switch>
          </div>

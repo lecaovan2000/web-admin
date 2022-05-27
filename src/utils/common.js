@@ -1,4 +1,6 @@
 import StorageKeys from "../constants/storage-keys"
+import moment from 'moment-timezone' ;
+import { constants } from "../constants/global";
 
 const createFormDataPayload = data => {
    const formData = new FormData()
@@ -11,8 +13,22 @@ const createFormDataPayload = data => {
    }
    return formData
 }
+const getTimeZone = () => {
+   return moment.tz.guess()
+}
+const convertToDate = (ISOString, dateFormat) => {
+   const stillUtc = moment(ISOString).utc().toDate()
+   return moment(stillUtc)
+      .tz(getTimeZone())
+      .format(dateFormat || constants.dateFormat)
+}
+const convertBirthdayToDate = birthday => {
+   const isoString = moment(birthday, 'YYYY-MM-DD').toISOString()
+   return convertToDate(isoString)
+}
 const removeBearerToken = () => {
    localStorage.removeItem(StorageKeys.ACCESS_TOKEN)
+   localStorage.removeItem(StorageKeys.USER)
 }
 
 const removeCurrentUser = () => {
@@ -36,5 +52,6 @@ export const common = {
    removeBearerToken,
    removeCurrentUser,
    formatPrice,
-   getBase64
+   getBase64,
+   convertBirthdayToDate
 }

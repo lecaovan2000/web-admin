@@ -64,7 +64,7 @@ function DetailUser(){
    return(
       <div>
          <Header
-            title={profileUser.fullname ||'No name'}
+            title={`User: ${profileUser.fullname}` ||'No name'}
             leftComponent={
                <button className='bnt_back' onClick={()=>{history.goBack()}}>
                   <IconBack/> Back

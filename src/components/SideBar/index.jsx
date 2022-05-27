@@ -9,7 +9,7 @@ import IconUserActive from '../../assets/icons/iconUserActive' ;
 import { logout } from '../../app/authSlice'
 import { useHistory } from 'react-router-dom'
 import { unwrapResult } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'
 
 SideBar.propTypes = {}
 
@@ -32,13 +32,13 @@ function SideBar(props) {
          },
          {
             routeLink: path.user,
-            label: 'Quản lí User',
+            label: 'Quản lí User/Dự án',
             icon: <IconUser />,
             iconActive: <IconUserActive/>
          },
          {
             routeLink: path.project,
-            label: 'Dự án',
+            label: 'Quản lý tin tức(bài báo)',
             icon: <IconUser />,
             iconActive: <IconUserActive />
          },
@@ -114,15 +114,15 @@ function SideBar(props) {
                trigger="click"
                placement="topLeft"
                content={
-                  <div>
-                       <button onClick={async()=>{
-                           const adminLogout = await dispatch(logout())
-                           unwrapResult(adminLogout)
-                           // history.push(paths.root)
-                        }
-
-                        } >Đăng Xuất</button>
-                     </div>
+                  <button
+                     onClick={async ()=>{
+                        const adminLogout = await dispatch(logout())
+                        unwrapResult(adminLogout)
+                        history.push(path.login)
+                     }}
+                  >
+                     Đăng xuất
+                  </button>
                }
             >
                <div className="sidebar__user-avatar">

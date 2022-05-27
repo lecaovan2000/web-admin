@@ -12,5 +12,9 @@ const apiLoginAdmin = {
       const url='user/logout'
       return axiosClient.post(url,data)
    },
+   checkExpiredToken: () => {
+      const url = "/oauth/check_access_token";
+      return axiosClient.post(url);
+   },
 }
 export default apiLoginAdmin;

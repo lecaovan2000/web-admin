@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import HeaderRight from '../../components/Header/HeaderRightAction'
 import IconBack from "../../assets/icons/IconBack";
 import IconAdd from '../../assets/icons/IconAdd'
+import NewsList from "./page/newsList";
 function TestRouting(){
    return(
       <div>
@@ -11,7 +12,7 @@ function TestRouting(){
             
             <HeaderRight icon={<IconAdd/>} />
          }/>
-         <h1>Test router</h1>
+         <NewsList/>
       </div>
    )
 }

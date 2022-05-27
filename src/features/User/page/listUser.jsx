@@ -22,16 +22,19 @@ function ListUser(){
    const getAllUser = async(pagination = constants.DEFAULT_PAGINATION)=>{
       setLoading(true)
       try {
-         const response = await apiUser.getAllUser({role:"CUSTOMER"})
-         //    page:pagination.pageNo,
-         //    page_size: pagination.pageSize,
-         // })
+         const payload={
+            role:'CUSTOMER',
+            page:pagination.pageNo,
+            page_size:pagination.pageSize
+         }
+         const response = await apiUser.getAllUser(payload)
+         setPagination({
+            pageNo: response.total_page,
+            pageSize: response.total,
+         })
          console.log('data',response)
          setDataSource(response.data)
-         // setPagination({
-         //    pageNo: response.currentPage,
-         //    pageSize: response.pageSize,
-         // })
+         
       } catch (error) {
          console.log('error', error)   
       }
@@ -40,6 +43,7 @@ function ListUser(){
    useEffect(()=>{
       getAllUser()
    },[])
+   
    console.log('dataUser',dataSource)
    const handleStatusUser = async (activate, userUid) => {
       setLoading(true)
@@ -61,6 +65,9 @@ function ListUser(){
       }
       setLoading(false)
    }
+   const handleChangePagination = (pageNo, pageSize) => {
+      getAllUser({ pageNo, pageSize })
+   }
    return(
       <div>
          <Header
@@ -73,6 +80,9 @@ function ListUser(){
          loading={loading}
          dataSource={dataSource}
          onStatusChange={handleStatusUser}
+         pagination={pagination}
+         onPaginate={handleChangePagination}
+         
       />
       </div>
       
