@@ -84,12 +84,12 @@ function NewsListTable(props){
    return(
       <SuperTable 
          columns={columns}
-         // hasPagination={true}
+         hasPagination={true}
          dataSource={dataSource}
-         // pagination={pagination}
-         // onPaginate={onPaginate}
+         pagination={pagination}
+         onPaginate={onPaginate}
          // onChange={onTableChange}
-         // onChange={handleChangePagination}
+         onChange={handleChangePagination}
          scroll={{ x:'max-content'}}
       />
    )

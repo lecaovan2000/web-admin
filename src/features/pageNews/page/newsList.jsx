@@ -11,17 +11,25 @@ import { useHistory } from "react-router-dom";
 import { utilsToken } from "../../../utils/token";
 
 function NewsList(){
-   // const [pagination, setPagination]=(pagination=constants.DEFAULT_PAGINATION_NEWS)
+const [pagination, setPagination]=useState(constants.DEFAULT_PAGINATION_NEWS)
 const [dataSource,setDataSource]=useState({})
 const [isOpen, setIsOpen]=useState(false)
 const { enqueueSnackbar } = useSnackbar()
 const history = useHistory()
 const token = utilsToken.getAccessToken()
 
-   const getNewsPaper = async()=>{
+   const getNewsPaper = async(pagination= constants.DEFAULT_PAGINATION_NEWS)=>{
       try {
-         const response = await apiNews.getAllNews()
+         const payload={
+            page:pagination.pageNo,
+            page_size:pagination.pageSize
+         }
+         const response = await apiNews.getAllNews(payload)
          setDataSource(response.data)
+         setPagination({
+            pageNo: response.total_page,
+            pageSize: response.total,
+         })
       } catch (error) {
          console.log('errr',error)
       }
@@ -52,7 +60,9 @@ const token = utilsToken.getAccessToken()
          })
       }
    }
-
+   const handleChangePagination = (pageNo, pageSize) => {
+      getNewsPaper({ pageNo, pageSize })
+   }
    return(
       <>
       <Header
@@ -62,11 +72,14 @@ const token = utilsToken.getAccessToken()
          }/>
          <NewsListTable
             dataSource={dataSource}
+            pagination={pagination}
+            onPaginate={handleChangePagination}
          />
          <AddNewsModal
             isOpen={isOpen}
             toggle={()=>setIsOpen(!isOpen)}
             onSubmit={handleAddNews}
+            
          />
       </>
    )

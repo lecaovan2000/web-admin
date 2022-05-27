@@ -68,8 +68,8 @@ function AddNewsModal(props){
                             size="large"
                             name="title"
                             form={form}
-                            placeholder="Tên dự án"
-                            label="Tên dự án"
+                            placeholder="Tên bản tin"
+                            label="Tên bản tin"
                             labelCol={{ span: 24 }}
                         />
                     </Col>
