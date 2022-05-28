@@ -1,10 +1,10 @@
 const DEFAULT_PAGINATION = {
    pageNo: 1,
-   pageSize: 10
+   pageSize: 13
 }
 const DEFAULT_PAGINATION_NEWS = {
    pageNo: 1,
-   pageSize: 10
+   pageSize: 13
 }
 const DEFAULT_PAGINATION_PROJECT_USER = {
    pageNo: 1,

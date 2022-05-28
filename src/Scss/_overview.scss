@@ -1,0 +1,18 @@
+.page_overview{
+   width: 100%;
+   height: 100%;
+   &-content{
+      width: 90%;
+      height: 100%;
+      padding: 30px;
+      h1{
+         text-transform: capitalize;
+         font-weight: 400;
+      }
+      &_item{
+         display: flex;
+         width: 50%;
+         // justify-content: space-between;
+      }
+   }
+}
